@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    command: ["sh", "docker/start.prod.sh"]
+    ports:
+      - "127.0.0.1:18080:8000"
+    volumes:
+      - ./database:/var/www/html/database
+      - ./storage:/var/www/html/storage
